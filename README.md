@@ -46,6 +46,7 @@ The MAX3421E Evaluation Board was adapted using a small, hand-wired transition b
 The MAX3421E Evaluation Board was modified by adding a wire from ___ to ___ so that the USB-A host connector would provide +5V power output.
 The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to the board, as well as SPI communications and interrupt handling.
 
+```
 # Interface Hardware         Top View, board edge here-->|                  
 #                                    RASPBERRY Pi3 A+/B+ |                  
 #       to MAX3421EVKIT                     +--PI3-J8--+ |                  
@@ -74,4 +75,5 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 #   Note: MAX3421EVKIT reset signal H.RESN must be driven by 3.3V
 #   Note: MAX3421EVKIT chip select signal H.SSN is driven by spi0.1 = CE1 = GPIO G7
 #
+```
 
