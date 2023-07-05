@@ -1,4 +1,5 @@
 # max3421-usb-host-example-rpi-6.1.y
+
 Maxim MAX3421e USB host example (hcd device driver integration test) on Raspberry Pi (kernel 6.1.y)
 
 The max3421-hcd firmware driver is part of the standard linux kernel source code, and has been for several years.
@@ -76,4 +77,10 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 #   Note: MAX3421EVKIT chip select signal H.SSN is driven by spi0.1 = CE1 = GPIO G7
 #
 ```
+
+# TODO items
+
+  - commands / shell script for downloading source code and generating default configuration
+  - commands / ex script for editing source code to enable max3421-hcd device driver support
+  - commands / shell script for building and installing kernel
 
