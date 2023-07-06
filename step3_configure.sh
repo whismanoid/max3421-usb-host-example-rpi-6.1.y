@@ -118,7 +118,7 @@ ex ./arch/arm/boot/dts/overlays/Makefile <<EOF
 " i -- insert text given on subsequent lines, until a '.'-only line"
 " insert/append a line ending in a backslash must use four backslashes"
 :/max98357a.dtbo/i
-	max3421-hcd.dts \\\\
+	max3421-hcd.dtbo \\\\
 .
 " wq -- Write and Quit"
 :wq
