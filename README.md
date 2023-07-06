@@ -45,7 +45,7 @@ Plugging in a USB flash drive will automatically mount into the file system.
 # Hardware
 
 The MAX3421E Evaluation Board was adapted using a small, hand-wired transition board.
-The MAX3421E Evaluation Board was modified by adding a wire from ___ to ___ so that the USB-A host connector would provide +5V power output.
+The MAX3421E Evaluation Board was modified by adding a wire <b> from U3 pin ___ to U3 pin ___ </b> so that the USB-A host connector would provide +5V power output.
 The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to the board, as well as SPI communications and interrupt handling.
 
 ```
@@ -81,7 +81,9 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 
 # TODO items
 
+  - hardware modification adding wire from U3 pin ___ to U3 pin ___
   - commands / shell script for downloading source code and generating default configuration
   - commands / ex script for editing source code to enable max3421-hcd device driver support
   - commands / shell script for building and installing kernel
-  - isolated 12M USB by pairing MAX3421E with sutable ADUMxxxx digital isolator?
+  - commands / ex script for boot config file
+  - investigate isolated 12M USB by pairing MAX3421E with sutable ADUMxxxx digital isolator?
