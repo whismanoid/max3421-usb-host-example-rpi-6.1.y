@@ -4,6 +4,7 @@
 printf "generate ./.config bcm2709 default configuration for Raspberry Pi 3+ 32-bit\n"
 # default configuration for Rpi3+ 32-bit
 cd ~/linux-test/linux
+#
 KERNEL=kernel7
 make bcm2709_defconfig
 #

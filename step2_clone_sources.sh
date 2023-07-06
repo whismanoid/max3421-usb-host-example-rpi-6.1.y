@@ -14,6 +14,8 @@ printf "download the linux kernel source code\n"
 # git clone --depth=1 git@github.com:whismanoid/linux-rpi-6.1.y-max3421-hcd.git
 git clone --depth=1 https://github.com/raspberrypi/linux
 #
+cd ~/linux-test/linux
+#
 printf "\n"
 printf "check what version the source code is currently on\n"
 head Makefile -n 5

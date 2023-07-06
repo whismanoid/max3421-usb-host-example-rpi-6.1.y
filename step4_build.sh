@@ -2,6 +2,7 @@
 #
 # -------------------------------------
 cd ~/linux-test/linux
+#
 printf "build new kernel\n"
 KERNEL=kernel7
 printf "KERNEL=${KERNEL}\n"
