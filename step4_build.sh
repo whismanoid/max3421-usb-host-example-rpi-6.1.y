@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # -------------------------------------
-# cd ~/linux-test
+cd ~/linux-test
 printf "build new kernel\n"
 KERNEL=kernel7
 printf "KERNEL=${KERNEL}\n"
