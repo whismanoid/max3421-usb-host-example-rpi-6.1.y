@@ -83,4 +83,4 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
   - commands / shell script for downloading source code and generating default configuration
   - commands / ex script for editing source code to enable max3421-hcd device driver support
   - commands / shell script for building and installing kernel
-
+  - isolated 12M USB by pairing MAX3421E with sutable ADUMxxxx digital isolator?
