@@ -23,8 +23,23 @@ sudo cp /boot/config.txt /boot/config-previous.txt
 printf "sudo cp /boot/config.txt /boot/config-previous.txt\n"
 sudo cp /boot/config.txt /boot/config-previous.txt
 
+# -------------------------------------
 printf "edit /boot/config.txt to include max3421-hcd module: dtoverlay=spi0-max3421e\n"
-# TODO
+# edit file /boot/config.txt
+# find line containing "# Additional overlays and parameters are documented"
+#   insert new line below that one, containing "dtoverlay=spi0-max3421e"
+ex /boot/config.txt <<EOF
+" /pattern/ -- find pattern match"
+" a -- append text below, given on subsequent lines, until a '.'-only line"
+" insert/append a line ending in a backslash must use four backslashes"
+:/# Additional overlays and parameters are documented/a
+dtoverlay=spi0-max3421e
+.
+"      "
+" wq -- Write and Quit"
+:wq
+EOF
+#
 # -------------------------------------
 printf "copying boot files\n"
 
