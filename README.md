@@ -95,9 +95,6 @@ git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git .
 
 # TODO items
 
-  - hardware modification adding wire from U3 pin ___ to U3 pin ___
-  - commands / shell script for downloading source code and generating default configuration
-  - commands / ex script for editing source code to enable max3421-hcd device driver support
-  - commands / shell script for building and installing kernel
-  - commands / ex script for boot config file
+  - doc: hardware modification adding wire from U3 pin ___ to U3 pin ___
+  - step4: # TODO: generate version string '6.1.37-v7+' from root Makefile
   - investigate isolated 12M USB by pairing MAX3421E with sutable ADUMxxxx digital isolator?
