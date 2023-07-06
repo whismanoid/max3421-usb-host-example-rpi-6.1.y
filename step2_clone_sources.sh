@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #
+# Note: run this script from within a new empty directory
+# where the linux source code shall be downloaded
+#
 # -------------------------------------
 printf "download the linux kernel source code\n"
 #cd ~
