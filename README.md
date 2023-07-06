@@ -11,10 +11,11 @@ https://github.com/torvalds/linux
   - Documentation/devicetree/bindings/usb/maxim,max3421.txt
 
 What I did here was just a small integration project to enable building that module and connecting it to some specific hardware interface pins, as a test/demo.
+Different hardware platforms will require adjustments to the device tree, specifying which spi bus connects to the max3421 device itself.
 
-I built the kernel 6.1 (sublevel 31) self-hosted on the Raspberry Pi 3, with one change to the default configuration file:
-Device Drivers | USB Support | MAX3421 HCD (USB-over-SPI) support: set it to <M>
-That makes the system enable the MAX3421 device driver module, which normally is omitted from the standard build.
+I built the kernel 6.1 (sublevel 31) self-hosted on the Raspberry Pi 3, with one change to the default configuration file, 
+`CONFIG_USB_MAX3421_HCD=m`, to make the system enable the MAX3421 device driver module (normally omitted from the standard build).
+This option can be enabled using the `make menuconfig` configuration GUI, then select `Device Drivers` | `USB Support` | `MAX3421 HCD (USB-over-SPI) support` and set it to `<M>`
 
 Additionally, I added a Device Tree Overlay `spi0-max3421e` to connect the max3421-hcd device driver to the hardware pins.
 
