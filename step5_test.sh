@@ -12,12 +12,19 @@ uname -a
 printf "\n"
 printf "dmesg | grep for max3421-hcd messages\n"
 # dmesg | grep -i 'max3421-hcd'
-dmesg | grep -i 'max3421-hcd' | grep -i --invert-match 'bad rev'
+# dmesg | grep -i 'max3421-hcd' | grep -i --invert-match 'bad rev'
+dmesg | grep --max-count=20 -i 'max3421-hcd'
 printf "\n"
 # skipping the dmesg "max3421-hcd spi0.1: bad rev 0x00"
 # ...which indicate that the hardware is not physically connected
 # ...to the MAX3421. Could be missing power, ground, spi, chip select.
 # TODO: squeeze out duplicate error lines of "max3421-hcd *: bad rev"
+if [[ -z $(dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev') ]]; then
+    dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev'
+    printf "...indicates that the hardware is not physically connected\n"
+    printf "to the MAX3421. Could be missing power, ground, spi, or chip select.\n"
+    printf "\n"
+fi
 #
 printf "lsusb -v --tree\n"
 printf "Expect a max3421-hcd root hub\n"
