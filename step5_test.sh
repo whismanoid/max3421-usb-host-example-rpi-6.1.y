@@ -4,13 +4,17 @@
 cd ~/linux-test/linux
 #
 printf "Test newly installed MAX3421-HCD USB host device driver\n"
-printf "\n"
 #
+printf "\n"
+printf "uname -a\n"
+uname -a
+#
+printf "\n"
 printf "dmesg | grep for max3421-hcd messages\n"
-dmesg | grep -i 'max3421-hcd'
+# dmesg | grep -i 'max3421-hcd'
+dmesg | grep -i 'max3421-hcd' | grep -i --invert-match 'bad rev'
 printf "\n"
-#
-# TODO: dmesg "max3421-hcd spi0.1: bad rev 0x00"
+# skipping the dmesg "max3421-hcd spi0.1: bad rev 0x00"
 # ...which indicate that the hardware is not physically connected
 # ...to the MAX3421. Could be missing power, ground, spi, chip select.
 # TODO: squeeze out duplicate error lines of "max3421-hcd *: bad rev"
