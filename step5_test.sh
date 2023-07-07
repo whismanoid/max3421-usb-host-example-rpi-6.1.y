@@ -26,7 +26,7 @@ else
 fi
 # search for dmesg "max3421-hcd spi0.1: bad rev 0x00"
 if [[ ! -z $(dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev') ]]; then
-	printf "FAIL: This dmesg error message about max3421-hcd bd rev...\n"
+	printf "FAIL: This dmesg error message about max3421-hcd bad rev...\n"
     dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev'
     printf "...indicates that the hardware is not physically connected\n"
     printf "to the MAX3421. Could be missing power, ground, spi, or chip select.\n"
