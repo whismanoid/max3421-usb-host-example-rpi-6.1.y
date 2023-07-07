@@ -114,6 +114,9 @@ printf "edit ./arch/arm/boot/dts/overlays/Makefile insert max3421-hcd.dts above 
 # (make sure the backslashes are escaped properly; these quoted literal strings contain a literal backslash character at the end)
 # find line containing "	max98357a.dtbo \"
 #   insert new line above that one, containing "	max3421-hcd.dts \"
+#
+# TODO: insert/append only if text hasn't already been added
+#
 ex ./arch/arm/boot/dts/overlays/Makefile <<EOF
 " /pattern/ -- find pattern match"
 " i -- insert text given on subsequent lines, until a '.'-only line"
@@ -131,6 +134,9 @@ printf "edit ./arch/arm/boot/dts/overlays/Makefile append spi0-max3421e.dtbo bel
 # (make sure the backslashes are escaped properly; these quoted literal strings contain a literal backslash character at the end)
 # find line containing "	spi0-2cs.dtbo \"
 #   insert new line below that one, containing "	spi0-max3421e.dtbo \"
+#
+# TODO: insert/append only if text hasn't already been added
+#
 ex ./arch/arm/boot/dts/overlays/Makefile <<EOF
 " /pattern/ -- find pattern match"
 " a -- append text below, given on subsequent lines, until a '.'-only line"

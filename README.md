@@ -96,5 +96,6 @@ git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git .
 # TODO items
 
   - doc: hardware modification adding wire from U3 pin ___ to U3 pin ___
-  - step4: # TODO: generate version string '6.1.37-v7+' from root Makefile
+  - step3: insert/append only if text hasn't already been added
+  - step4: generate version string '6.1.37-v7+' from root Makefile
   - investigate isolated 12M USB by pairing MAX3421E with sutable ADUMxxxx digital isolator?
