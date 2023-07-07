@@ -9,6 +9,28 @@ printf "\n"
 printf "uname -a\n"
 uname -a
 # $(uname -r) gives just the number triplet e.g. '6.1.37-v7+'
+# TODO: was this the version that we built?
+VERSION=$(grep --max-count=1 -i 'VERSION' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# VERSION = 6
+PATCHLEVEL=$(grep --max-count=1 -i 'PATCHLEVEL' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# PATCHLEVEL = 1
+SUBLEVEL=$(grep --max-count=1 -i 'SUBLEVEL' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# SUBLEVEL = 37
+EXTRAVERSION=$(grep --max-count=1 -i 'EXTRAVERSION' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# EXTRAVERSION =
+# printf "expect uname -r to give ${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+\n"
+EXPECT_UNAME_R="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+"
+ACTUAL_UNAME_R="$(uname -r)"
+# printf "expect uname -r ${EXPECT_UNAME_R}\n"
+# printf "actual uname -r ${ACTUAL_UNAME_R}\n"
+if [[ "${EXPECT_UNAME_R}" == "${ACTUAL_UNAME_R}" ]]; then
+	printf "PASS: actual uname -r kernel version is ${ACTUAL_UNAME_R}\n"
+else
+	printf "FAIL: actual uname -r kernel version is ${ACTUAL_UNAME_R}\n"
+	printf "      expect uname -r kernel version is ${EXPECT_UNAME_R}\n"
+	printf "      Was the kernel that we built installed yet?\n"
+	printf "      Try installing the new kernel and rebooting.\n"
+fi
 #
 printf "\n"
 printf "dmesg | grep for max3421-hcd messages\n"
