@@ -9,7 +9,9 @@ printf "\n"
 printf "uname -a\n"
 uname -a
 # $(uname -r) gives just the number triplet e.g. '6.1.37-v7+'
-# TODO: was this the version that we built?
+# was this the version that we built?
+#
+# Get target kernel version from root Makefile
 VERSION=$(grep --max-count=1 -i 'VERSION' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
 # VERSION = 6
 PATCHLEVEL=$(grep --max-count=1 -i 'PATCHLEVEL' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
@@ -20,6 +22,7 @@ EXTRAVERSION=$(grep --max-count=1 -i 'EXTRAVERSION' ~/linux-test/linux/Makefile 
 # EXTRAVERSION =
 # printf "expect uname -r to give ${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+\n"
 EXPECT_UNAME_R="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+"
+#
 ACTUAL_UNAME_R="$(uname -r)"
 # printf "expect uname -r ${EXPECT_UNAME_R}\n"
 # printf "actual uname -r ${ACTUAL_UNAME_R}\n"

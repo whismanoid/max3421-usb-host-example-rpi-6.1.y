@@ -60,7 +60,19 @@ printf "sudo cp arch/arm/boot/zImage /boot/$KERNEL.img\n"
 sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 
 # Don't hardcode the version string '6.1.37-v7+'
+#
 # TODO: generate version string '6.1.37-v7+' from root Makefile
+# Get target kernel version from root Makefile
+VERSION=$(grep --max-count=1 -i 'VERSION' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# VERSION = 6
+PATCHLEVEL=$(grep --max-count=1 -i 'PATCHLEVEL' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# PATCHLEVEL = 1
+SUBLEVEL=$(grep --max-count=1 -i 'SUBLEVEL' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# SUBLEVEL = 37
+EXTRAVERSION=$(grep --max-count=1 -i 'EXTRAVERSION' ~/linux-test/linux/Makefile | cut --delimiter=' ' -f 3)
+# EXTRAVERSION =
+# printf "expect uname -r to give ${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+\n"
+EXPECT_UNAME_R="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+"
 #
 # can we parse it from first 5 lines of ~/linux-test/linux/Makefile
 # head Makefile -n 5
@@ -74,6 +86,6 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 # assuming VERSION=6 PATCHLEVEL=1 SUBLEVEL=31
 # then install in 6.1.31-v7+
 #
-printf "sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/6.1.37-v7+\n"
-sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/6.1.37-v7+
+printf "sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/${EXPECT_UNAME_R}\n"
+sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/${EXPECT_UNAME_R}
 # -------------------------------------
