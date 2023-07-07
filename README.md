@@ -84,7 +84,7 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 ~~~
 mkdir ~/max3421-usb-host-example-rpi-6.1.y
 cd ~/max3421-usb-host-example-rpi-6.1.y
-git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git .
+git clone https://github.com/whismanoid/max3421-usb-host-example-rpi-6.1.y.git .
 . ~/max3421-usb-host-example-rpi-6.1.y/step1_install_tools.sh
 . ~/max3421-usb-host-example-rpi-6.1.y/step2_clone_sources.sh
 . ~/max3421-usb-host-example-rpi-6.1.y/step3_configure.sh
