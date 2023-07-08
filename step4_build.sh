@@ -21,15 +21,16 @@ printf "backing up old boot files\n"
 printf "sudo cp /boot/config.txt /boot/config-previous.txt\n"
 sudo cp /boot/config.txt /boot/config-previous.txt
 
-printf "sudo cp /boot/config.txt /boot/config-previous.txt\n"
-sudo cp /boot/config.txt /boot/config-previous.txt
-
 # -------------------------------------
 printf "edit /boot/config.txt to include max3421-hcd module: dtoverlay=spi0-max3421e\n"
 # edit file /boot/config.txt
 # find line containing "# Additional overlays and parameters are documented"
 #   insert new line below that one, containing "dtoverlay=spi0-max3421e"
-ex /boot/config.txt <<EOF
+# insert/append only if text hasn't already been added
+if [[ $(grep -i "dtoverlay=spi0-max3421e" /boot/config.txt) ]]; then
+    printf "     /boot/config.txt already references dtoverlay=spi0-max3421e\n"
+else
+    sudo ex /boot/config.txt <<EOF
 " /pattern/ -- find pattern match"
 " a -- append text below, given on subsequent lines, until a '.'-only line"
 " insert/append a line ending in a backslash must use four backslashes"
@@ -40,25 +41,9 @@ dtoverlay=spi0-max3421e
 " wq -- Write and Quit"
 :wq
 EOF
+fi
 #
 # -------------------------------------
-printf "copying boot files\n"
-
-printf "sudo cp arch/arm/boot/dts/*.dtb /boot/\n"
-sudo cp arch/arm/boot/dts/*.dtb /boot/
-
-printf "sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/\n"
-sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
-
-printf "sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/\n"
-sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
-
-printf "sudo cp /boot/$KERNEL.img /boot/$KERNEL_$(uname -r).img\n"
-sudo cp /boot/$KERNEL.img /boot/$KERNEL_$(uname -r).img
-
-printf "sudo cp arch/arm/boot/zImage /boot/$KERNEL.img\n"
-sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
-
 # Don't hardcode the version string '6.1.37-v7+'
 #
 # TODO: generate version string '6.1.37-v7+' from root Makefile
@@ -82,6 +67,29 @@ EXPECT_UNAME_R="${VERSION}.${PATCHLEVEL}.${SUBLEVEL}-v7+"
 # 4: SUBLEVEL = 37
 # 5: EXTRAVERSION =
 #
+printf "copying boot files\n"
+
+printf "sudo cp arch/arm/boot/dts/*.dtb /boot/\n"
+sudo cp arch/arm/boot/dts/*.dtb /boot/
+
+printf "sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/\n"
+sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+
+printf "sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/\n"
+sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
+
+# back up the kernel image we previously booted from
+printf "sudo cp /boot/$KERNEL.img /boot/$KERNEL_$(uname -r).img\n"
+sudo cp /boot/$KERNEL.img /boot/$KERNEL_$(uname -r).img
+
+# copy of the kernel image we just built
+printf "sudo cp arch/arm/boot/zImage /boot/$KERNEL.img\n"
+sudo cp arch/arm/boot/zImage /boot/$KERNEL_${EXPECT_UNAME_R}.img
+
+# kernel image that we will next boot up with
+printf "sudo cp arch/arm/boot/zImage /boot/$KERNEL.img\n"
+sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+
 # sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/$(uname -r)
 # assuming VERSION=6 PATCHLEVEL=1 SUBLEVEL=31
 # then install in 6.1.31-v7+

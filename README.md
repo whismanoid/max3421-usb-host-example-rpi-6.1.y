@@ -89,6 +89,12 @@ git clone https://github.com/whismanoid/max3421-usb-host-example-rpi-6.1.y.git .
 . ~/max3421-usb-host-example-rpi-6.1.y/step2_clone_sources.sh
 . ~/max3421-usb-host-example-rpi-6.1.y/step3_configure.sh
 . ~/max3421-usb-host-example-rpi-6.1.y/step4_build.sh
+reboot
+~~~
+
+# Testing the project
+
+~~~
 . ~/max3421-usb-host-example-rpi-6.1.y/step5_test.sh
 ~~~~
 
