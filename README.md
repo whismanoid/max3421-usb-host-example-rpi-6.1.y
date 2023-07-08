@@ -81,20 +81,38 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 
 ![MAX3421EVKIT board wired up to Raspbery Pi 3A+](./photos/MAX3421EVKIT_RaspberryPi3A_Photo.jpg)
 
+
 # Building the project
 
+On a Raspberry Pi 3A+, check out a local copy of this repository anonymously:
+
 ~~~
-mkdir ~/max3421-usb-host-example-rpi-6.1.y
-cd ~/max3421-usb-host-example-rpi-6.1.y
-git clone https://github.com/whismanoid/max3421-usb-host-example-rpi-6.1.y.git .
+git clone https://github.com/whismanoid/max3421-usb-host-example-rpi-6.1.y.git ~/max3421-usb-host-example-rpi-6.1.y
+~~~
+
+(Note: pressing CTRL+ALT+T brings up a terminal window where these command lines can be run using copy/paste.)
+
+Now install the required development tools and download the source code of the Raspberry Pi OS (which is based on linux) using these two scripts:
+
+~~~
 . ~/max3421-usb-host-example-rpi-6.1.y/step1_install_tools.sh
 . ~/max3421-usb-host-example-rpi-6.1.y/step2_clone_sources.sh
+~~~
+
+This script leaves a fresh copy of the OS kernel source code in your ~/linux-test/linux directory. Now configure the kernel to support MAX3421. The build operation may take several hours.
+
+~~~
 . ~/max3421-usb-host-example-rpi-6.1.y/step3_configure.sh
 . ~/max3421-usb-host-example-rpi-6.1.y/step4_build.sh
 reboot
 ~~~
 
+After finishing, the system shall reboot and will then be running the newly built kernel.
+
+
 # Testing the project
+
+With the power off, connect the MAX3421 hardware, and then power up the system and run the test script:
 
 ~~~
 . ~/max3421-usb-host-example-rpi-6.1.y/step5_test.sh
