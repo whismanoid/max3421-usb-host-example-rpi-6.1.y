@@ -123,3 +123,5 @@ With the power off, connect the MAX3421 hardware, and then power up the system a
 
   - doc: hardware modification adding wire from U3 pin ___ to U3 pin ___
   - investigate isolated 12M USB by pairing MAX3421E with sutable ADUMxxxx digital isolator?
+  - `git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git ~/max3421-usb-host-example-rpi-6.1.y` only works if you're me
+
