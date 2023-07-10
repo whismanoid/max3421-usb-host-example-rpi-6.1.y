@@ -79,6 +79,8 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 #
 ```
 
+# Hardware - Photos
+
 ![MAX3421EVKIT board wired up to Raspbery Pi 3A+](./photos/MAX3421EVKIT_RaspberryPi3A_Photo.jpg)
 
 
