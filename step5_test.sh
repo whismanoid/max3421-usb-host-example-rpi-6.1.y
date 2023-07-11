@@ -39,7 +39,7 @@ printf "\n"
 printf "dmesg | grep for max3421-hcd messages\n"
 # dmesg | grep -i 'max3421-hcd'
 # dmesg | grep -i 'max3421-hcd' | grep -i --invert-match 'bad rev'
-if [[ ! -z $(dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev') ]]; then
+if [[ ! -z $(dmesg | grep --max-count=1 -i 'max3421-hcd') ]]; then
 	dmesg | grep --max-count=5 -i 'max3421-hcd'
 	printf "PASS: dmesg log shows max3421-hcd module was loaded\n"
 	printf "\n"
@@ -55,6 +55,9 @@ if [[ ! -z $(dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev') ]]; then
     dmesg | grep --max-count=1 -i 'max3421-hcd .*: bad rev'
     printf "...indicates that the hardware is not physically connected\n"
     printf "to the MAX3421. Could be missing power, ground, spi, or chip select.\n"
+    printf "\n"
+else
+    printf "PASS: no dmesg about max3421-hcd bad rev 0x00, so hardware seems working.\n"
     printf "\n"
 fi
 #
