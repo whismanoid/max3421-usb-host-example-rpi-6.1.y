@@ -5,7 +5,7 @@ cd ~/linux-test/linux || exit
 #
 printf "build new kernel\n"
 KERNEL=kernel7
-printf "KERNEL=${KERNEL}\n"
+printf "KERNEL=%s\n" "${KERNEL}"
 
 printf "head Makefile -n 5\n"
 head Makefile -n 5
@@ -79,21 +79,21 @@ printf "sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/\n"
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 
 # back up the kernel image we previously booted from
-printf "sudo cp /boot/$KERNEL.img /boot/$KERNEL_$(uname -r).img\n"
-sudo cp /boot/$KERNEL.img /boot/$KERNEL_$(uname -r).img
+printf "sudo cp /boot/%s.img /boot/%s_$(uname -r).img\n" "${KERNEL}" "${KERNEL}"
+sudo cp "/boot/${KERNEL}.img" "/boot/${KERNEL}_$(uname -r).img"
 
 # copy of the kernel image we just built
-printf "sudo cp arch/arm/boot/zImage /boot/$KERNEL.img\n"
-sudo cp arch/arm/boot/zImage /boot/$KERNEL_${EXPECT_UNAME_R}.img
+printf "sudo cp arch/arm/boot/zImage /boot/%s.img\n" "${KERNEL}"
+sudo cp "arch/arm/boot/zImage" "/boot/${KERNEL}_${EXPECT_UNAME_R}.img"
 
 # kernel image that we will next boot up with
-printf "sudo cp arch/arm/boot/zImage /boot/$KERNEL.img\n"
-sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+printf "sudo cp arch/arm/boot/zImage /boot/%s.img\n" "${KERNEL}"
+sudo cp arch/arm/boot/zImage /boot/${KERNEL}.img
 
 # sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/$(uname -r)
 # assuming VERSION=6 PATCHLEVEL=1 SUBLEVEL=31
 # then install in 6.1.31-v7+
 #
-printf "sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/${EXPECT_UNAME_R}\n"
-sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/${EXPECT_UNAME_R}
+printf "sudo cp drivers/usb/host/max3421-hcd.ko /lib/modules/%s\n" "${EXPECT_UNAME_R}"
+sudo cp "drivers/usb/host/max3421-hcd.ko" "/lib/modules/${EXPECT_UNAME_R}"
 # -------------------------------------
