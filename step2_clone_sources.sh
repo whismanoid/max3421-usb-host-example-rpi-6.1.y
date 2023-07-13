@@ -4,13 +4,15 @@
 # where the linux source code shall be downloaded
 #
 # -------------------------------------
-printf "TODO: create new empty directory ~/linux-test\n"
-#cd ~
-#mkdir linux
-#cd ~/linux
-mkdir ~/linux-test
+if [[ -e ~/linux-test/ ]]; then
+        printf "creating new empty directory ~/linux-test\n"
+        #cd ~
+        #mkdir linux
+        #cd ~/linux
+        mkdir ~/linux-test
+fi
 cd ~/linux-test || exit
-printf "download the linux kernel source code\n"
+printf "downloading the linux kernel source code\n"
 # git clone --depth=1 git@github.com:whismanoid/linux-rpi-6.1.y-max3421-hcd.git
 git clone --depth=1 https://github.com/raspberrypi/linux
 #
