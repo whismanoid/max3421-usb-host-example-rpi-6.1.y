@@ -4,7 +4,7 @@
 # where the linux source code shall be downloaded
 #
 # -------------------------------------
-if [[ -e ~/linux-test/ ]]; then
+if [[ ! -d ~/linux-test/ ]]; then
         printf "creating new empty directory ~/linux-test\n"
         #cd ~
         #mkdir linux
