@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # -------------------------------------
-cd ~/linux-test/linux
+cd ~/linux-test/linux || exit
 #
 printf "Test newly installed MAX3421-HCD USB host device driver\n"
 #
