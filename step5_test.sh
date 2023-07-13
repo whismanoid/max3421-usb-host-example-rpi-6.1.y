@@ -27,10 +27,10 @@ ACTUAL_UNAME_R="$(uname -r)"
 # printf "expect uname -r ${EXPECT_UNAME_R}\n"
 # printf "actual uname -r ${ACTUAL_UNAME_R}\n"
 if [[ "${EXPECT_UNAME_R}" == "${ACTUAL_UNAME_R}" ]]; then
-	printf "PASS: actual uname -r kernel version is ${ACTUAL_UNAME_R}\n"
+	printf "PASS: actual uname -r kernel version is %s\n" "${ACTUAL_UNAME_R}"
 else
-	printf "FAIL: actual uname -r kernel version is ${ACTUAL_UNAME_R}\n"
-	printf "      expect uname -r kernel version is ${EXPECT_UNAME_R}\n"
+	printf "FAIL: actual uname -r kernel version is %s\n" "${ACTUAL_UNAME_R}"
+	printf "      expect uname -r kernel version is %s\n" "${EXPECT_UNAME_R}"
 	printf "      Was the kernel that we built installed yet?\n"
 	printf "      Try installing the new kernel and rebooting.\n"
 fi
