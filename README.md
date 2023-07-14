@@ -147,7 +147,7 @@ With the power off, connect the MAX3421 hardware, and then power up the system a
 
 # TODO items
 
-  - Investigate isolated 12M USB host using Analog Devices one of the digital isolator products.
+  - Investigate isolated 12M USB host using one of the digital isolator products.
     - Configure device tree overlay for MAX3421E at slow SPI SCLK rate (8MHz)
     - Analog Devices ADUM3150 digital isolator (3.75kV isolation rating)
     - Analog Devices ADUM4150 digital isolator (5kV isolation rating)
