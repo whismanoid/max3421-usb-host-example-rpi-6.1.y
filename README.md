@@ -84,16 +84,16 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 ![MAX3421EVKIT board wired up to Raspbery Pi 3A+](./photos/MAX3421EVKIT_RaspberryPi3A_Photo_small.jpg)
 
 
-![Wiring Board Top View](./photos/Wiring_Board_Top.jpg)
+![Wiring Board Top View](./photos/Wiring_Board_Top_small.jpg)
 
 
-![Wiring Board Bottom View](./photos/Wiring_Board_Bottom.jpg)
+![Wiring Board Bottom View](./photos/Wiring_Board_Bottom_small.jpg)
 
 
-![Top View](./photos/Top_View.jpg)
+![Top View](./photos/Top_View_small.jpg)
 
 
-![Side View](./photos/Side_View.jpg)
+![Side View](./photos/Side_View_small.jpg)
 
 
 ## Hardware - Patch MAX3421EVKIT U3 to enable driving +5V bus as USB Host
