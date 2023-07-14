@@ -1,6 +1,6 @@
 # max3421-usb-host-example-rpi-6.1.y
 
-Maxim MAX3421e USB host example (hcd device driver integration test) on Raspberry Pi (kernel 6.1.y)
+Maxim / Analog Devices MAX3421e USB host example (hcd device driver integration test) on Raspberry Pi (kernel 6.1.y)
 
 The max3421-hcd firmware driver is part of the standard linux kernel source code, and has been for several years.
 The source code is located here:
@@ -147,6 +147,9 @@ With the power off, connect the MAX3421 hardware, and then power up the system a
 
 # TODO items
 
-  - Investigate isolated 12M USB host; adjust for slower SPI SCLK rate. Test idea using MAX3421E with ADUM4150 digital isolator (5kV isolation rating).
+  - Investigate isolated 12M USB host using Analog Devices one of the digital isolator products.
+    - Configure device tree overlay for MAX3421E at slow SPI SCLK rate (8MHz)
+    - Analog Devices ADUM3150 digital isolator (3.75kV isolation rating)
+    - Analog Devices ADUM4150 digital isolator (5kV isolation rating)
   - `git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git ~/max3421-usb-host-example-rpi-6.1.y` only works if you're me
 
