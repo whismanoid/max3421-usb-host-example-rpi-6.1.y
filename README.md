@@ -81,7 +81,7 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 
 # Hardware - Photos
 
-![MAX3421EVKIT board wired up to Raspbery Pi 3A+](./photos/MAX3421EVKIT_RaspberryPi3A_Photo.jpg)
+![MAX3421EVKIT board wired up to Raspbery Pi 3A+](./photos/MAX3421EVKIT_RaspberryPi3A_Photo_small.jpg)
 
 
 ![Wiring Board Top View](./photos/Wiring_Board_Top.jpg)
@@ -94,6 +94,16 @@ The Raspberry Pi 3A+ 40-pin connector provided +3.3V and +5.0V power supplies to
 
 
 ![Side View](./photos/Side_View.jpg)
+
+
+## Hardware - Patch MAX3421EVKIT U3 to enable driving +5V bus as USB Host
+
+![MAX3421EVKIT patch U3](./photos/MAX3421evkit_patch_U3_pcb.png)
+
+The MAX3421EVKIT board requires a modification to enable driving +5V bus as USB Host.
+
+    1. Cut the trace from pin 3 of U3 to the via hole.
+    2. Solder a wire from pin 1 to pin 3 of U3.
 
 
 # Building the project
@@ -135,7 +145,7 @@ With the power off, connect the MAX3421 hardware, and then power up the system a
 
 # TODO items
 
-  - doc: hardware modification adding wire from U3 pin ___ to U3 pin ___
+  - doc: hardware modification adding wire from U3 pin 1 to U3 pin 3
   - investigate 5kV isolated 12M USB by pairing MAX3421E with ADUM4150 digital isolator?
   - `git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git ~/max3421-usb-host-example-rpi-6.1.y` only works if you're me
 
