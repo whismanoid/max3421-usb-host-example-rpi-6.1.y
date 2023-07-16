@@ -145,15 +145,15 @@ With the power off, connect the MAX3421 hardware, and then power up the system a
 ~~~~
 
 
-# TODO items
+# Future: Isolated SPI interface support
 
   - Investigate isolated 12M USB host using one of the SPI digital isolator products.
     - Isolation devices add propagation delay, requiring reduced SPI SCLK rates
     - Configure device tree overlay for MAX3421E at slow SPI SCLK rate (8MHz)
+      - change boot config.txt to specify `dtoverlay=spi0-max3421e,spimaxfrequency=8000000`
     - How much does the reduced SCLK rate affect USB host performance? How slow can we go?
     - Slower SCLK rate will support wider range of isolation options
     - Analog Devices ADUM3150 digital isolator (3.75kV isolation rating)
     - Analog Devices ADUM4150 digital isolator (5kV isolation rating)
     - Does this solution make any sense vs USB Isolators? e.g. ADUM3165, LTM2894, ADUM3160?
-  - `git clone git@github.com:whismanoid/max3421-usb-host-example-rpi-6.1.y.git ~/max3421-usb-host-example-rpi-6.1.y` only works if you're me
 
