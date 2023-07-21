@@ -96,16 +96,39 @@ The Raspberry Pi 3A+ 40-pin connector provides +3.3V and +5.0V power supplies to
 ![Side View](./photos/Side_View_small.jpg)
 
 
-## Hardware - Patch MAX3421EVKIT U3 to enable driving +5V bus as USB Host
+## Hardware - Patch MAX3421EVKIT to enable driving +5V bus @ 100mA as USB Host
 
 ![MAX3421EVKIT patch U3](./photos/MAX3421evkit_patch_U3_pcb.png)
 
 ![MAX3421EVKIT patch U3](./photos/MAX3421EVKIT_patch_U3_sch.png)
 
-The MAX3421EVKIT board requires a modification to enable driving +5V bus as USB Host.
+The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 100mA as USB Host.
 
-    1. Cut the trace from pin 3 of U3 to the via hole.
+    1. Cut the trace from pin 3 of U3 (MAX4793) to the via hole.
     2. Solder a wire from pin 1 to pin 3 of U3.
+
+## Hardware Option - Patch MAX3421EVKIT to enable driving +5V bus @ 500mA as USB Host
+
+*Not tested yet. Pending verification.*
+
+**TBD: SET resistor value for current limit**
+
+**TBD: how Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT~ asserts low**
+
+The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 500mA as USB Host.
+
+    1. Using proper desoldering tools, carefully remove U3 Maxim MAX4793.
+    2. Request sample Maxim MAX891LEUA+.
+    3. Using a micromax prototype board, wire the MAX891L to the EV kit as follows:
+       3.1. MAX891 pin 1 IN to U3 pin 1 IN
+       3.2. MAX891 pin 2 IN to U3 pin 1 IN
+       3.3. MAX891 pin 3 ON~ to U3 pin 2 GND
+       3.4. MAX891 pin 4 GND to U3 pin 2 GND
+       3.5. MAX891 pin 5 SET to a resistor (xxxxx ohms), connect other end of that resistor to GND. The value of this resistor determines the current limit. See MAX891L datasheet, *Setting the Current Limit*.
+       3.6. MAX891 pin 6 FAULT~ to an offboard wire to Raspberry Pi 40pin connector, pin 18 (GPIO24)
+       3.7. MAX891 pin 7 OUT to U3 pin 5 OUT
+       3.8. MAX891 pin 8 OUT to U3 pin 5 OUT
+    4. Optional: Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT~ asserts low.
 
 
 # Building the project
