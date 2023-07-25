@@ -46,7 +46,7 @@ Plugging in a USB flash drive will automatically mount into the file system.
 
 The MAX3421E Evaluation Board was adapted using a small, hand-wired transition board.
 The MAX3421E Evaluation Board was modified by isolating U3 MAX4793 pin 3 (ON input), and adding a wire from U3 pin 1 (+5V IN) to U3 pin 3 (ON), so that the USB-A host connector provides +5V power output.
-The Raspberry Pi 3A+ 40-pin connector provides +3.3V and +5.0V power supplies to the board, as well as SPI communications and interrupt handling.
+The Raspberry Pi 3A+ / 3B+ 40-pin connector provides +3.3V and +5.0V power supplies to the board, as well as SPI communications and interrupt handling.
 
 ```
 # Interface Hardware         Top View, board edge here-->|                  
@@ -111,29 +111,32 @@ The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 100mA
 
 *Not tested yet. Pending verification.*
 
-**TBD: SET resistor value for current limit**
+**TBD: determine MAX891L SET resistor value for 500mA current limit. Is this resistor optional?**
 
-**TBD: how Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT~ asserts low**
+**TBD: determine how to configure RPi GPIO24 as an input/interrupt**
+
+**TBD: determine how to display overcurrent warning if MAX891 FAULT~ asserts low**
 
 The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 500mA as USB Host.
 
-    1. Using proper desoldering tools, carefully remove U3 Maxim MAX4793.
-    2. Request sample Maxim MAX891LEUA+.
-    3. Using a micromax prototype board, wire the MAX891L to the EV kit as follows:
-       3.1. MAX891 pin 1 IN to U3 pin 1 IN
-       3.2. MAX891 pin 2 IN to U3 pin 1 IN
-       3.3. MAX891 pin 3 ON~ to U3 pin 2 GND
-       3.4. MAX891 pin 4 GND to U3 pin 2 GND
-       3.5. MAX891 pin 5 SET to a resistor (xxxxx ohms), connect other end of that resistor to GND. The value of this resistor determines the current limit. See MAX891L datasheet, *Setting the Current Limit*.
-       3.6. MAX891 pin 6 FAULT~ to an offboard wire to Raspberry Pi 40pin connector, pin 18 (GPIO24)
-       3.7. MAX891 pin 7 OUT to U3 pin 5 OUT
-       3.8. MAX891 pin 8 OUT to U3 pin 5 OUT
-    4. Optional: Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT~ asserts low.
+    1. Request sample Maxim MAX891LEUA+
+    2. Using a micromax prototype board, wire the MAX891L to the EV kit as follows:
+       2.1. MAX891 pin 1 IN to +5V (U3 pin 1, or header J3 pin 3)
+       2.2. MAX891 pin 2 IN to +5V (U3 pin 1, or header J3 pin 3)
+       2.3. MAX891 pin 3 ON~ to GND (U3 pin 2, or header J3 pin 1)
+       2.4. MAX891 pin 4 GND to GND (U3 pin 2, or header J3 pin 1)
+       2.5. MAX891 pin 5 SET to a resistor (_______ ohms), connect other end of that resistor to GND.
+       2.6. MAX891 pin 6 FAULT~ to an offboard wire to Raspberry Pi 40pin connector, pin 18 (GPIO24)
+       2.7. MAX891 pin 7 OUT to USB Host connector J1-5V (U3 pin 5)
+       2.8. MAX891 pin 8 OUT to USB Host connector J1-5V (U3 pin 5)
+    3. Optional: Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT~ asserts low
+
+The value of the resistor between MAX891L SET and GND determines the current limit. See MAX891L datasheet, *Setting the Current Limit*.
 
 
 # Building the project
 
-On a Raspberry Pi 3A+, check out a local copy of this repository anonymously:
+On a Raspberry Pi 3A+ / 3B+, check out a local copy of this repository anonymously:
 
 ~~~
 git clone https://github.com/whismanoid/max3421-usb-host-example-rpi-6.1.y.git ~/max3421-usb-host-example-rpi-6.1.y
@@ -148,7 +151,7 @@ Now install the required development tools and download the source code of the R
 . ~/max3421-usb-host-example-rpi-6.1.y/step2_clone_sources.sh
 ~~~
 
-This script leaves a fresh copy of the OS kernel source code in your ~/linux-test/linux directory. Now configure the kernel to support MAX3421. The build operation may take several hours.
+This script leaves a fresh copy of the OS kernel source code in your ~/linux-test/linux directory. Now configure the kernel to support MAX3421. The build operation may take several hours on Raspberry Pi 3A+ / 3B+, especially if using a model with less than 1GB base memory.
 
 ~~~
 . ~/max3421-usb-host-example-rpi-6.1.y/step3_configure.sh
