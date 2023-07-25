@@ -113,7 +113,7 @@ The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 100mA
 
 **TBD: determine MAX891L SET resistor value for 500mA current limit. Is this resistor optional?**
 
-**TBD: determine how to configure RPi GPIO24 as an input/interrupt**
+**TBD: determine how to configure RPi GPIO24 as an input/interrupt. See interrupt_handler.py**
 
 **TBD: determine how to display overcurrent warning if MAX891 FAULT~ asserts low**
 
@@ -127,8 +127,9 @@ The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 500mA
        2.4. MAX891 pin 4 GND to GND (U3 pin 2, or header J3 pin 1)
        2.5. MAX891 pin 5 SET to a resistor (_______ ohms), connect other end of that resistor to GND.
        2.6. MAX891 pin 6 FAULT~ to an offboard wire to Raspberry Pi 40pin connector, pin 18 (GPIO24)
-       2.7. MAX891 pin 7 OUT to USB Host connector J1-5V (U3 pin 5)
-       2.8. MAX891 pin 8 OUT to USB Host connector J1-5V (U3 pin 5)
+       2.7. MAX891 pin 7 OUT to USB Host connector J1-5V (U3 pin 5, or connector J1 pin 1)
+       2.8. MAX891 pin 8 OUT to USB Host connector J1-5V (U3 pin 5, or connector J1 pin 1)
+       2.9. Connect a 0.1uF ceramic bypass capacitor between MAX891 pin 1 IN and pin 4 GND
     3. Optional: Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT~ asserts low
 
 The value of the resistor between MAX891L SET and GND determines the current limit. See MAX891L datasheet, *Setting the Current Limit*.
