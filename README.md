@@ -127,12 +127,7 @@ Using a micromax prototype board, wire a Maxim MAX891LEUA+ to the EV kit as foll
 
 The value of the resistor between MAX891L SET and GND determines the current limit. See MAX891L datasheet, *Setting the Current Limit*.
 
-Optional: Configure GPIO24 as an input/interrupt? Display overcurrent warning if MAX891 FAULT asserts low
-
-**TBD: determine how to configure RPi GPIO24 as an input/interrupt. See interrupt_handler.py**
-
-**TBD: determine how to display overcurrent warning if MAX891 FAULT asserts low**
-
+Optional: Run `python interrupt_handler.py` to monitor GPIO24 for falling edge; will display overcurrent warning if MAX891 FAULT asserts low.
 
 
 # Building the project
