@@ -62,7 +62,7 @@ The Raspberry Pi 3A+ / 3B+ 40-pin connector provides +3.3V and +5.0V power suppl
 # H        | 13    14 |                 g22 | 15    16 | |H g23             
 # I        | 15    16 | p.resn         3.3V |[17]   18 | |I G24 FAULT       
 # J        | 17    18 | H.RESN   H.MOSI G10 |[19]  [20]| |J GND             
-# K        | 19    20 | FAULT    H.MISO G9  |[21]  [22]| |K G25 INT H.INT   
+# K  FAULT | 19    20 |          H.MISO G9  |[21]  [22]| |K G25 INT H.INT   
 # L        | 21   [22]| H.INT    H.SCK  G11 |[23]  [24]| |L G8  CE0         
 # M        | 23    24 |                 GND |[25]  [26]| |M g7  CE1 H.SSN   
 # N  p.int | 25   [26]| H.SSN         id.sd | 27    28 | |N id.sc           
@@ -120,7 +120,7 @@ Using a micromax prototype board, wire a Maxim MAX891LEUA+ to the EV kit as foll
     2. MAX891 pin 3 ON to GND (U3 pin 2, or header J3 pin 1)
     3. MAX891 pin 4 GND to GND (U3 pin 2, or header J3 pin 1)
     4. MAX891 pin 6 FAULT to an offboard wire to Raspberry Pi 40pin connector, pin 18 (GPIO24)
-    4.1. Note: MAX3421 EVKIT J4-20 suggested to carry FAULT signal to PI3-J8.18 
+    4.1. Note: MAX3421 EVKIT J4-19 suggested to carry FAULT signal to PI3-J8.18 
     5. MAX891 pin 7 and 8 OUT to USB Host connector J1-5V (U3 pin 5, or connector J1 pin 1)
     6. Connect a 0.1uF ceramic bypass capacitor between MAX891 pin 1 IN and pin 4 GND
     7. Connect a resistor (2.4 ohms) betweem MAX891 pin 5 SET and GND
