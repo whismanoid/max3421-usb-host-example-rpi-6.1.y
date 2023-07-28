@@ -23,7 +23,7 @@ GPIO.add_event_detect(24, GPIO.RISING,
                       callback=interrupt_handler,
                       bouncetime=200)
 
-print("Lisening for overcurrent fault reports on GPIO24 falling edge...")
+print("Listening for overcurrent fault reports on GPIO24 falling edge...")
 print("...use CTRL+C to terminate listener...")
 while (True):
     time.sleep(0)
