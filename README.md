@@ -109,8 +109,6 @@ The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 100mA
 
 ## Hardware Option - Patch MAX3421EVKIT to enable driving +5V bus @ 500mA as USB Host
 
-*Not tested yet. Pending verification.*
-
 **TBD: determine MAX891L SET resistor value for 500mA current limit. Is this resistor optional?**
 
 The MAX3421EVKIT board requires a modification to enable driving +5V bus @ 500mA as USB Host.
